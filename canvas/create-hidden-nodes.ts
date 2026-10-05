@@ -18,7 +18,7 @@ export function createHiddenNodes(hidden: number, sinapses: ISinapses) {
         const w = 80
         const h = 80
         const r = 100
-        const x = (canvas.width/2) - 40
+        const x = (canvas.width / 2) - 40
         const y = ((canvas_h / (2 * hidden)) + (i * 110))
 
         const w2 = 60
@@ -26,19 +26,27 @@ export function createHiddenNodes(hidden: number, sinapses: ISinapses) {
         const r2 = 100
         const x2 = x + (w - w2) / 2
         const y2 = y + (h - h2) / 2
+        
+        const canvasRect = canvas.getBoundingClientRect();
 
         foundedNodes.inputNodes.map(inp => {
             const input = inp as HTMLInputElement;
-            const pos = input.getBoundingClientRect()
+            const pos = input.getBoundingClientRect();
+
+            const inputY =
+                pos.top + pos.height / 2 - canvasRect.top;
 
             context.strokeStyle = '#D5E2D9';
             context.lineWidth = 1;
+
             context.beginPath();
-            context.moveTo(130, pos.top - 100);
+
+            context.moveTo(130, inputY);
             context.lineTo(x, y + 40);
-            context.stroke()
-            context.closePath()
-        })
+
+            context.stroke();
+            context.closePath();
+        });
 
         context.lineWidth = 4;
         context.strokeStyle = "#729BB7";
@@ -57,7 +65,7 @@ export function createHiddenNodes(hidden: number, sinapses: ISinapses) {
         divCanvas?.appendChild(input)
         input.id = `hidden-node-${i}`
         input.disabled = true
-        
+
         input.style.left = `${x2}px`
         input.style.top = `${y2}px`
 

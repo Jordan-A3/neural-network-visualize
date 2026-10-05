@@ -27,18 +27,26 @@ export function createOutputNodes(output: number, sinapses: ISinapses) {
         const x2 = x + (w - w2) / 2
         const y2 = y + (h - h2) / 2
 
+        const canvasRect = canvas.getBoundingClientRect();
+
         foundedNodes.hiddenNodes.map(inp => {
             const hidden = inp as HTMLInputElement;
-            const pos = hidden.getBoundingClientRect()
-
+            const pos = hidden.getBoundingClientRect();
+        
+            const hiddenY =
+                pos.top + pos.height / 2 - canvasRect.top;
+        
             context.strokeStyle = '#DDD8E5';
             context.lineWidth = 1;
+        
             context.beginPath();
-            context.moveTo((canvas.width/2) + 40, pos.top - 100);
+        
+            context.moveTo((canvas.width / 2) + 40, hiddenY);
             context.lineTo(x, y + 40);
-            context.stroke()
-            context.closePath()
-        })
+        
+            context.stroke();
+            context.closePath();
+        });
 
         context.lineWidth = 4;
         context.strokeStyle = "#9975A9";
