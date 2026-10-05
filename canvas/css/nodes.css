@@ -1,0 +1,56 @@
+#div-canvas input {
+    display: flex;
+
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+
+    position: absolute;
+
+    text-align: center;
+    color: #24303F;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+    border-radius: 100px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    z-index: 10 !important;
+}
+
+/* Chrome / Edge autofill */
+#div-canvas input:-webkit-autofill,
+#div-canvas input:-webkit-autofill:hover,
+#div-canvas input:-webkit-autofill:focus,
+#div-canvas input:-webkit-autofill:active {
+    -webkit-text-fill-color: #24303F !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+
+    /*
+     * Remove o fundo que Chrome/Edge colocam no autofill
+     */
+    -webkit-box-shadow: 0 0 0 100px transparent inset !important;
+    box-shadow: 0 0 0 100px transparent inset !important;
+
+    transition: background-color 99999s ease-out 0s;
+}
+
+#div-canvas input {
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    color: #24303F;
+}
